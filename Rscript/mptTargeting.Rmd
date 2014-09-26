@@ -61,7 +61,7 @@ ggplot(data = scores, aes(x = PC1, y = PC2, label = rownames(scores))) +
   ggtitle("PCA plot of MPT Targeting Indicators ")
 ```
 
-Subset data to plot large factors.
+Subset data to plot large factors.  
 sub.score <- subset(scores, PC1 >1 | PC1<(-1))
 
 
