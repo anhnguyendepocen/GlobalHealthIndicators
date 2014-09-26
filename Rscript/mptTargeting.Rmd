@@ -1,0 +1,68 @@
+remove(list=ls())
+library(ggplot2)
+library(grid)
+library(ggbiplot)
+
+---
+title: "PCA.Analysis.Global.Health"
+author: "Tim Essam, GeoCenter"
+date: "Thursday, September 25, 2014"
+output: html_document
+---
+
+Set working directory and call in data.   
+```{r}
+setwd("C:/Users/t/Box Sync/GlobalHealthIndicators/R/Datain")
+d <- read.csv("mptTargeting.csv", sep=",", header=TRUE, stringsAsFactors=FALSE)
+```
+
+Convert countries to row.names for ease in using the prcomp function and following the example found [here][1].  
+```{r}
+df <- d[,-1]
+rownames(df) <- d[,1]
+```
+
+Summarize data (use function to handle NA values).  
+
+```{r}
+dimnames(df)  
+```
+
+First, have a look at the means then the variances. Recall that PCA relies only on the variance, so we want to ensure that the variances are of similar size and no single variable is dominating.  
+```{r}
+apply(df,2,function(x){
+    mean(x[!is.na(x)])
+    })  
+apply(df,2,function(x){
+  var(x[!is.na(x)])
+})
+```
+
+USe prcomp and set scale = TRUE to ensure that variables are standardized. Using the na.omit() function to allow for missing values in the data.  
+```{r}
+set.seed(9252014) # For reproducibility
+pca.out = prcomp(na.omit((df)), scale=TRUE)
+pca.out
+```
+The first output is the standard deviations of the principal components themselves. The second table shows the components themselves. The first component loads more heavily on HIV prevalence and HSV2 Prevalence, and little on unmet needs. Also, notice that all the signs are negative. This is irrelevant because the variance of a negative is the same as the variance of a negative * (-1). The second component loads heavily on the Unmet needs.  
+
+```{r}
+names(pca.out)
+biplot((pca.out), scale = 0, cex = .33)
+```
+
+Write a ggplot2 function to make the graphic a little prettier  
+```{r}
+scores = as.data.frame(pca.out$x)
+ggplot(data = scores, aes(x = PC1, y = PC2, label = rownames(scores))) +
+  geom_hline(yintercept = 0, colour = "gray65") +
+  geom_vline(xintercept = 0, colour = "gray65") +
+  geom_text(colour = "tomato", alpha = 0.8, size = 4) +
+  ggtitle("PCA plot of MPT Targeting Indicators ")
+```
+
+Subset data to plot large factors.
+sub.score <- subset(scores, PC1 >1 | PC1<(-1))
+
+
+[1]: https://www.youtube.com/watch?v=lFHISDj_4EQ
