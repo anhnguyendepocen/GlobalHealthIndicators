@@ -5,6 +5,7 @@ title: "PCA.Analysis.Global.Health"
 author: "Tim Essam, GeoCenter"  
 date: "Thursday, September 25, 2014"  
 output: htlm_document   
+
 === 
 
 Clear workspace and load libraries for analysis.
