@@ -11,10 +11,19 @@ output: htlm_document
 Clear workspace and load libraries for analysis.
 
 ```{r}
- remove(list=ls())  
- library(ggplot2)  
- library(grid)  
- library(ggbiplot)
+# Check if the required libraries exist, if not install them 
+required_lib =c("ggplot2","grid", "ggbiplot")
+
+lib_check<-function(){
+  for(i in 1:length(required_lib)){
+    if(required_lib[i] %in% rownames(installed.packages()) == FALSE)
+    {install.packages(required_lib[i])}
+  }
+}
+lib_check()
+
+# Load required libraries
+lapply(required_lib, require, character.only=T)
 ```
   
 Set working directory and call in data.   
