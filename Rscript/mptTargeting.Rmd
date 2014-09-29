@@ -7,9 +7,9 @@ date: "Thursday, September 25, 2014"
 output: html_document  
 === 
 
-`remove(list=ls())  
-library(ggplot2)  
-library(grid)  
+`remove(list=ls())
+library(ggplot2)
+library(grid)
 library(ggbiplot)`
 
 
