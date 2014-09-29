@@ -11,7 +11,7 @@ date: "Thursday, September 25, 2014"
 library(ggplot2)
 library(grid)
 library(ggbiplot)
-```
+```  
 
 
 Set working directory and call in data.   
