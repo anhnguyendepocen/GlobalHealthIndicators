@@ -7,11 +7,13 @@ date: "Thursday, September 25, 2014"
   
 === 
 
-```{r} remove(list=ls())  
-library(ggplot2)  
-library(grid)  
-library(ggbiplot)
-```  
+```{r}
+ remove(list=ls())  
+ library(ggplot2)  
+ library(grid)  
+ library(ggbiplot)
+```
+  
 Set working directory and call in data.   
 ```{r}
 setwd("C:/Users/t/Box Sync/GlobalHealthIndicators/R/Datain")
