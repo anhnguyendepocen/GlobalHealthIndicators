@@ -7,6 +7,8 @@ date: "Thursday, September 25, 2014"
   
 === 
 
+Clear workspace and load libraries for analysis.
+
 ```{r}
  remove(list=ls())  
  library(ggplot2)  
