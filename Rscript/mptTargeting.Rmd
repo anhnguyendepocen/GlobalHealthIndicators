@@ -3,7 +3,8 @@
 ######
 title: "PCA.Analysis.Global.Health"  
 author: "Tim Essam, GeoCenter"  
-date: "Thursday, September 25, 2014"  
+date: "Thursday, September 25, 2014" 
+  
 === 
 
 `remove(list=ls())
