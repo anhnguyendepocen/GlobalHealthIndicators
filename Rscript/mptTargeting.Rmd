@@ -7,10 +7,11 @@ date: "Thursday, September 25, 2014"
   
 === 
 
-`remove(list=ls())
+```{r} remove(list=ls())
 library(ggplot2)
 library(grid)
-library(ggbiplot)`
+library(ggbiplot)
+```
 
 
 Set working directory and call in data.   
