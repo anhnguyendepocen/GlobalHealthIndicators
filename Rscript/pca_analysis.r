@@ -51,7 +51,6 @@ apply(df,2,function(x){
 
 # Use prcomp and set scale = TRUE to ensure that variables are standardized. 
 # Using the na.omit() function to allow for missing values in the data.
-set.seed(9252014) # For reproducibility
 pca.out = prcomp(na.omit((df)), scale=TRUE)
 pca.out
 
